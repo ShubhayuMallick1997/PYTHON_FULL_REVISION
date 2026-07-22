@@ -2,9 +2,22 @@
 
 ## Architecture overview
 
-![Labeled healthcare platform architecture](healthcare-platform-architecture-labeled.svg)
+> GitHub-safe architecture diagram: this section has no external image dependency and renders directly in GitHub Markdown.
 
-*Visual cover:* [healthcare-platform-architecture.png](healthcare-platform-architecture.png)
+```mermaid
+flowchart TB
+  SRC["Source Systems<br/>EHR · Lab · Scheduling · Payer"] --> INT["Integration Layer<br/>external_resources<br/>validate · map · deduplicate"]
+  INT --> CLIN["Clinical Core<br/>patients · encounters · observations<br/>orders · medications · documents"]
+  IAM["Security & Governance<br/>organizations · users · roles · audit_events"] -. tenant scope .-> CLIN
+  CLIN --> BILL["Revenue Cycle<br/>charges → claims → payments"]
+  CLIN --> OUT["Transactional Outbox<br/>outbox_events"]
+  OUT --> DOWN["Downstream Services<br/>notifications · integrations · CDC"]
+  CLIN --> ANALYTICS["Analytics<br/>daily_encounter_metrics"]
+  BILL --> ANALYTICS
+  ANALYTICS --> DASH["Dashboards & Reporting"]
+```
+
+The PNG and SVG files remain optional downloadable companions. To display them on GitHub, commit them in the same folder as this Markdown file.
 
 The platform is a multi-tenant clinical data system on Neon Postgres. It preserves raw interoperability payloads, normalizes them into clinical entities, derives financial workflows, emits reliable events, and publishes reporting metrics.
 
