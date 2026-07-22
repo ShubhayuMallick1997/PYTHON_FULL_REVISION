@@ -3,6 +3,11 @@
 ## Architecture overview
 
 > GitHub-safe architecture diagram: this section has no external image dependency and renders directly in GitHub Markdown.
+>
+<p>
+  <img src ="https://github.com/ShubhayuMallick1997/PYTHON_FULL_REVISION/blob/main/exec-3149ff61-7b2e-47ec-815a-388e5b5b37a4.png" > 
+</p>
+  
 
 ```mermaid
 flowchart TB
