@@ -2,7 +2,9 @@
 
 ## Architecture overview
 
-![Healthcare platform architecture](healthcare-platform-architecture.png)
+![Labeled healthcare platform architecture](healthcare-platform-architecture-labeled.svg)
+
+*Visual cover:* [healthcare-platform-architecture.png](healthcare-platform-architecture.png)
 
 The platform is a multi-tenant clinical data system on Neon Postgres. It preserves raw interoperability payloads, normalizes them into clinical entities, derives financial workflows, emits reliable events, and publishes reporting metrics.
 
